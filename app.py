@@ -4,14 +4,15 @@ import streamlit as st
 import time
 import pickle as pkl
 from streamlit_option_menu import option_menu
-st.set_page_config(page_title='Calorie Calculator App',page_icon=":hourglass:")
+st.set_page_config(page_title='Calorie Calculator', page_icon=":wavy_dash:")
 
 #######################################################################################################################################################################
 
 selected = option_menu( 
-    menu_title = None,
+    menu_title = "Calorie Calculator",
     options = ["Home", "Project", "Contact"],
     icons=["house", "book", "envelope"],
+    menu_icon= 'calculator',
     default_index= 0,
     orientation="horizontal",
     styles = {
@@ -26,27 +27,41 @@ selected = option_menu(
 
 #Home Tab:
 if selected == "Home":
-    st.markdown(
-        "<h2 style = 'text-align: center'> Calorie Calculator </h2>",
-        unsafe_allow_html=True)
+    st.write("    ")
+    st.write("    ")
+
+    # st.markdown(
+    #     "<h2 style = 'text-align: center'> Calorie Calculator </h2>",
+    #     unsafe_allow_html=True)
+
+
+
 
     col1, col2, col3 = st.columns(3)
     with col1:
         st.image('walk.png')
         st.write("   ")
-        st.write('**In this WebApp you will be able to observe your predicted calories burned in your body.**')
         st.write("   ")
+        st.write('**In this WebApp, you will be able to observe your `predicted calories burned` in your body.**')
+        st.write("   ")
+        st.write("   ")
+
         st.image('dumbbell.png')
     with col2:
         st.image('calculator.png')
         st.write("   ")
-        st.write("**The only thing you have to do is pass your parameters like `Age`, `Gender`, etc into this WebApp.**")
         st.write("   ")
+        st.write("**You only have to pass your parameters like `Age`, `Gender`, `bmi`, etc into this WebApp.**")
+        st.write("   ")
+        st.write("   ")
+
         st.image('weight.png')
     with col3:
         st.image('heartrate.png')
         st.write("   ")
-        st.write(" **After you will be able to see the predicted value of kilocalories that burned in your body.**")
+        st.write("   ")
+        st.write(" **After you will be able to see the predicted value of `kilocalories` that burned in your body.**")
+        st.write("   ")
         st.write("   ")
         st.image('clock.png')
 
@@ -70,11 +85,11 @@ if selected == "Project":
         else:
                 gender = 1
 
-        age = st.slider("Age (Year) ", 10, 100, 30)
+        age = st.slider("Age (Year) ", 0, 100, 30)
         duration = st.slider("Activity Duration (min)  ", 0, 50, 15)
         heart_rate = st.slider("Heart Rate  ", 50, 150, 80)
         body_temp = st.slider("Body Temperature (C)  ", 35.0, 45.0, 40.38)
-        bmi = st.slider("BMI  ", 15.0, 40.0, 30.20)
+        bmi = st.slider("BMI  ", 15.0, 40.0, 20.20)
 
         data = {
                 "Gender": ["Male" if gender_button == "Male" else "Female"],
@@ -115,21 +130,25 @@ if selected == "Project":
     latest_iteration = st.empty()
     bar = st.progress(0)
     for i in range(100):
-            # Update the progress bar with each iteration
+        # Update the progress bar with each iteration
         bar.progress(i + 1)
         time.sleep(0.01)
 
     model = pkl.load(open("regressor.pkl", "rb"))
 
     x = np.round_(model.predict(np.array([[gender, age, duration, heart_rate, body_temp, bmi]]))[0], decimals=2)
-    st.write("{:.2f}".format(x), " kilocalories burned.")
+    st.write("`{:.2f}`".format(x), " **kilocalories**")
         
 #######################################################################################################################################################################
 
 #Contact Tab
 if selected == "Contact":
+    st.write("    ")
     st.markdown(
         "<h2 style = 'text-align: center'> Get in Touch </h2>", unsafe_allow_html=True)
+    st.write("    ")
+    st.write("    ")
+    st.write("    ")
     st.write("    ")
     st.write("    ")
     col1, col2, col3, col4, col5 = st.columns(5)
