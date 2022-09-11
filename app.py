@@ -134,7 +134,7 @@ if selected == "Project":
         bar.progress(i + 1)
         time.sleep(0.01)
 
-    model = pkl.load(open("regressor.pkl", "rb"))
+    model = pkl.load(open("Linear_Regressor.pkl", "rb"))
 
     x = np.round_(model.predict(np.array([[gender, age, duration, heart_rate, body_temp, bmi]]))[0], decimals=2)
     st.write("`{:.2f}`".format(x), " **kilocalories**")
