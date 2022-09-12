@@ -60,7 +60,7 @@ if selected == "Home":
         st.image('heartrate.png')
         st.write("   ")
         st.write("   ")
-        st.write(" **After you will be able to see the predicted value of `kilocalories` that burned in your body.**")
+        st.write(" **After you will be able to see the predicted value of `calories` that burned in your body.**")
         st.write("   ")
         st.write("   ")
         st.image('clock.png')
