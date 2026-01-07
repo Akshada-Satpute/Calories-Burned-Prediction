@@ -1,7 +1,7 @@
 
 # Calories-Burned-Prediction
 
-## Machine learning algorithm with Linear Regression Model
+## Machine Learning Algorithm with Linear Regression Model
 
 ### Project Description
 
